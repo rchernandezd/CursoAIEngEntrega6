@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generado_en": "2026-10-19T23:41:00+00:00",
+    "generado_en": "2026-10-20T00:07:04+00:00",
     "proveedor": "openai",
     "modelo": "gpt-4o-mini",
     "modelo_supervisor": "gpt-4o-mini",
@@ -30,8 +30,8 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
-            "razon": "Falta el dato de cuántos días de vacaciones le corresponden por año según la política de la empresa.",
-            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+            "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de la empresa.",
+            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
             "rubrica": {
               "completitud": false,
               "respaldo_en_evidencia": false,
@@ -40,7 +40,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1841
+          "duracion_ms": 1479
         },
         {
           "orden": 2,
@@ -51,14 +51,14 @@
               {
                 "nombre": "buscar_en_politicas_internas",
                 "args": {
-                  "pregunta": "días de vacaciones por año"
+                  "pregunta": "días de vacaciones anuales"
                 },
                 "salida": "[Fuente: politica_teletrabajo.txt] Política de Teletrabajo - TechCorp\n\nEl esquema estándar es de 3 días de trabajo remoto y 2 días presenciales por semana. Soporte Técnico Nivel 1 y Recepción son 100% presenciales.\n\n[Fuente: politica_vacaciones.txt] Política de Vacaciones - TechCorp\n\nLos empleados c"
               }
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 3851
+          "duracion_ms": 4412
         },
         {
           "orden": 3,
@@ -68,24 +68,24 @@
             "para": "investigador",
             "hallazgos": []
           },
-          "duracion_ms": 0
+          "duracion_ms": 2
         },
         {
           "orden": 4,
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "Faltan cálculos para determinar el total de días de vacaciones en 3 años.",
-            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Debe devolver el total de días de vacaciones en 3 años.",
+            "razon": "Ya están todos los números y falta un cálculo.",
+            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Devolver el total de días de vacaciones en 3 años.",
             "rubrica": {
-              "completitud": false,
+              "completitud": true,
               "respaldo_en_evidencia": true,
               "consistencia": true
             },
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1590
+          "duracion_ms": 1465
         },
         {
           "orden": 5,
@@ -103,7 +103,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2130
+          "duracion_ms": 2146
         },
         {
           "orden": 6,
@@ -113,7 +113,7 @@
             "para": "analista",
             "hallazgos": []
           },
-          "duracion_ms": 1
+          "duracion_ms": 0
         },
         {
           "orden": 7,
@@ -130,19 +130,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1277
+          "duracion_ms": 1132
         },
         {
           "orden": 8,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días.\n\nPor lo tanto, le corresponden 84 días de vacaciones en 3 años. \n\nFuente: política de vacaciones de TechCorp."
+            "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días de vacaciones.\n\nFuente: política de vacaciones de TechCorp.\n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones."
           },
-          "duracion_ms": 1370
+          "duracion_ms": 1607
         }
       ],
-      "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días.\n\nPor lo tanto, le corresponden 84 días de vacaciones en 3 años. \n\nFuente: política de vacaciones de TechCorp.",
+      "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días de vacaciones.\n\nFuente: política de vacaciones de TechCorp.\n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 2,
@@ -156,7 +156,7 @@
         "analista": true
       },
       "research_output": {
-        "consulta": "días de vacaciones por año",
+        "consulta": "días de vacaciones anuales",
         "estado": "completo",
         "hallazgos": [
           {
@@ -195,8 +195,8 @@
           "paso": 1,
           "origen": "llm",
           "siguiente": "investigador",
-          "razon": "Falta el dato de cuántos días de vacaciones le corresponden por año según la política de la empresa.",
-          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+          "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de la empresa.",
+          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
           "rubrica": {
             "completitud": false,
             "respaldo_en_evidencia": false,
@@ -208,10 +208,10 @@
           "paso": 2,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "Faltan cálculos para determinar el total de días de vacaciones en 3 años.",
-          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Debe devolver el total de días de vacaciones en 3 años.",
+          "razon": "Ya están todos los números y falta un cálculo.",
+          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Devolver el total de días de vacaciones en 3 años.",
           "rubrica": {
-            "completitud": false,
+            "completitud": true,
             "respaldo_en_evidencia": true,
             "consistencia": true
           },
@@ -231,10 +231,10 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 12063,
+      "duracion_ms": 12246,
       "tokens": {
-        "input_tokens": 6457,
-        "output_tokens": 722,
+        "input_tokens": 6455,
+        "output_tokens": 724,
         "total_tokens": 7179
       },
       "verificaciones": [
@@ -286,8 +286,8 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "Ya están todos los números disponibles y falta un cálculo.",
-            "instruccion": "Calcular el total de días de vacaciones acumulados en 12 años. Usar los siguientes datos: 14 días (primeros 5 años), 21 días (siguientes 5 años), 28 días (últimos 2 años). Devolver el total acumulado.",
+            "razon": "Ya están todos los números disponibles y solo falta un cálculo.",
+            "instruccion": "Calcula el total de días de vacaciones acumulados por el empleado en 12 años. Usa los siguientes datos: 14 días (primeros 5 años), 21 días (siguientes 5 años), y 28 días (últimos 2 años). Devuelve el total acumulado.",
             "rubrica": {
               "completitud": true,
               "respaldo_en_evidencia": true,
@@ -296,7 +296,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1485
+          "duracion_ms": 1549
         },
         {
           "orden": 2,
@@ -314,7 +314,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2331
+          "duracion_ms": 2247
         },
         {
           "orden": 3,
@@ -331,7 +331,7 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → FINISH (llm)",
           "detalle": {
-            "razon": "Todos los cálculos están completos y validados. El analista ha proporcionado el total de días de vacaciones acumulados en 12 años, que es 231.",
+            "razon": "Todos los cálculos están completos y validados. El analista ha realizado correctamente el cálculo de los días de vacaciones acumulados en 12 años.",
             "instruccion": "",
             "rubrica": {
               "completitud": true,
@@ -341,19 +341,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1322
+          "duracion_ms": 1297
         },
         {
           "orden": 5,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "El empleado acumuló un total de 231 días de vacaciones en 12 años en TechCorp. Este cálculo se realizó sumando los días de vacaciones de cada periodo: 14 días por 5 años (70 días), 21 días por 5 años (105 días) y 28 días por 2 años (56 días). \n\nCálculo: 14*5 + 21*5 + 28*2 = 70 + 105 + 56 = 231 días.\n\nFuente: Aportes validados del analista. \n\nNo se presentan advertencias ni supuestos en este cálculo."
+            "respuesta": "El empleado acumuló un total de 231 días de vacaciones en 12 años en TechCorp. Este cálculo se realizó considerando 14 días por los primeros 5 años, 21 días por los siguientes 5 años y 28 días por los últimos 2 años: \n\n14 días * 5 años + 21 días * 5 años + 28 días * 2 años = 231 días.\n\nFuente: Aportes validados por el analista. \n\nNo se presentan advertencias ni supuestos adicionales."
           },
-          "duracion_ms": 1592
+          "duracion_ms": 1459
         }
       ],
-      "respuesta": "El empleado acumuló un total de 231 días de vacaciones en 12 años en TechCorp. Este cálculo se realizó sumando los días de vacaciones de cada periodo: 14 días por 5 años (70 días), 21 días por 5 años (105 días) y 28 días por 2 años (56 días). \n\nCálculo: 14*5 + 21*5 + 28*2 = 70 + 105 + 56 = 231 días.\n\nFuente: Aportes validados del analista. \n\nNo se presentan advertencias ni supuestos en este cálculo.",
+      "respuesta": "El empleado acumuló un total de 231 días de vacaciones en 12 años en TechCorp. Este cálculo se realizó considerando 14 días por los primeros 5 años, 21 días por los siguientes 5 años y 28 días por los últimos 2 años: \n\n14 días * 5 años + 21 días * 5 años + 28 días * 2 años = 231 días.\n\nFuente: Aportes validados por el analista. \n\nNo se presentan advertencias ni supuestos adicionales.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 1,
@@ -377,8 +377,8 @@
           "paso": 1,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "Ya están todos los números disponibles y falta un cálculo.",
-          "instruccion": "Calcular el total de días de vacaciones acumulados en 12 años. Usar los siguientes datos: 14 días (primeros 5 años), 21 días (siguientes 5 años), 28 días (últimos 2 años). Devolver el total acumulado.",
+          "razon": "Ya están todos los números disponibles y solo falta un cálculo.",
+          "instruccion": "Calcula el total de días de vacaciones acumulados por el empleado en 12 años. Usa los siguientes datos: 14 días (primeros 5 años), 21 días (siguientes 5 años), y 28 días (últimos 2 años). Devuelve el total acumulado.",
           "rubrica": {
             "completitud": true,
             "respaldo_en_evidencia": true,
@@ -390,7 +390,7 @@
           "paso": 2,
           "origen": "llm",
           "siguiente": "FINISH",
-          "razon": "Todos los cálculos están completos y validados. El analista ha proporcionado el total de días de vacaciones acumulados en 12 años, que es 231.",
+          "razon": "Todos los cálculos están completos y validados. El analista ha realizado correctamente el cálculo de los días de vacaciones acumulados en 12 años.",
           "instruccion": "",
           "rubrica": {
             "completitud": true,
@@ -400,11 +400,11 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 6733,
+      "duracion_ms": 6554,
       "tokens": {
-        "input_tokens": 3340,
-        "output_tokens": 425,
-        "total_tokens": 3765
+        "input_tokens": 3346,
+        "output_tokens": 406,
+        "total_tokens": 3752
       },
       "verificaciones": [
         {
@@ -440,7 +440,7 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
-            "razon": "Falta información específica sobre el esquema de teletrabajo de la empresa.",
+            "razon": "Falta información específica sobre el esquema de teletrabajo de la empresa, que no está presente en la pregunta.",
             "instruccion": "Buscar datos sobre el esquema estándar de teletrabajo en las políticas internas de TechCorp, específicamente cuántos días de trabajo remoto y cuántos presenciales por semana están establecidos. Devolver hallazgos con fuente y cita textual.",
             "rubrica": {
               "completitud": false,
@@ -450,7 +450,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1560
+          "duracion_ms": 1611
         },
         {
           "orden": 2,
@@ -468,7 +468,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 3938
+          "duracion_ms": 4005
         },
         {
           "orden": 3,
@@ -495,19 +495,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1198
+          "duracion_ms": 1274
         },
         {
           "orden": 5,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "El esquema estándar de teletrabajo consiste en 3 días de trabajo remoto y 2 días presenciales por semana. Esta información proviene de la fuente \"politica_teletrabajo.txt\". \n\nNo se presentan advertencias ni supuestos adicionales."
+            "respuesta": "El esquema estándar de teletrabajo consiste en 3 días de trabajo remoto y 2 días presenciales por semana. Esta información proviene de la fuente \"politica_teletrabajo.txt\". \n\nNo se presentan advertencias ni supuestos en esta respuesta."
           },
-          "duracion_ms": 1003
+          "duracion_ms": 971
         }
       ],
-      "respuesta": "El esquema estándar de teletrabajo consiste en 3 días de trabajo remoto y 2 días presenciales por semana. Esta información proviene de la fuente \"politica_teletrabajo.txt\". \n\nNo se presentan advertencias ni supuestos adicionales.",
+      "respuesta": "El esquema estándar de teletrabajo consiste en 3 días de trabajo remoto y 2 días presenciales por semana. Esta información proviene de la fuente \"politica_teletrabajo.txt\". \n\nNo se presentan advertencias ni supuestos en esta respuesta.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 1,
@@ -545,7 +545,7 @@
           "paso": 1,
           "origen": "llm",
           "siguiente": "investigador",
-          "razon": "Falta información específica sobre el esquema de teletrabajo de la empresa.",
+          "razon": "Falta información específica sobre el esquema de teletrabajo de la empresa, que no está presente en la pregunta.",
           "instruccion": "Buscar datos sobre el esquema estándar de teletrabajo en las políticas internas de TechCorp, específicamente cuántos días de trabajo remoto y cuántos presenciales por semana están establecidos. Devolver hallazgos con fuente y cita textual.",
           "rubrica": {
             "completitud": false,
@@ -568,11 +568,11 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 7702,
+      "duracion_ms": 7863,
       "tokens": {
         "input_tokens": 3823,
-        "output_tokens": 438,
-        "total_tokens": 4261
+        "output_tokens": 448,
+        "total_tokens": 4271
       },
       "verificaciones": [
         {
@@ -618,7 +618,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1581
+          "duracion_ms": 1624
         },
         {
           "orden": 2,
@@ -650,7 +650,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 4888
+          "duracion_ms": 5019
         },
         {
           "orden": 3,
@@ -677,7 +677,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1408
+          "duracion_ms": 1390
         },
         {
           "orden": 5,
@@ -695,7 +695,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 1942
+          "duracion_ms": 2541
         },
         {
           "orden": 6,
@@ -712,7 +712,7 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → FINISH (llm)",
           "detalle": {
-            "razon": "Todos los datos han sido validados y se ha realizado el cálculo correctamente.",
+            "razon": "Todos los datos han sido validados y se han realizado los cálculos necesarios. La suma de días de vacaciones es correcta y completa.",
             "instruccion": "",
             "rubrica": {
               "completitud": true,
@@ -722,19 +722,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1055
+          "duracion_ms": 1275
         },
         {
           "orden": 8,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "Los tres empleados suman un total de 63 días de vacaciones. El cálculo es el siguiente:\n\n- Empleado con 3 años de antigüedad: 14 días\n- Empleado con 7 años de antigüedad: 21 días\n- Empleado con 12 años de antigüedad: 28 días\n\nTotal: 14 + 21 + 28 = 63 días.\n\nFuente: política_vacaciones.txt. \n\nNo hay advertencias o supuestos adicionales."
+            "respuesta": "Los tres empleados suman un total de 63 días de vacaciones. El cálculo es el siguiente:\n\n- Empleado con 3 años de antigüedad: 14 días\n- Empleado con 7 años de antigüedad: 21 días\n- Empleado con 12 años de antigüedad: 28 días\n\nTotal: 14 + 21 + 28 = 63 días.\n\nFuente de los datos: política de vacaciones de la empresa. \n\nNo hay advertencias o supuestos relevantes en este cálculo."
           },
-          "duracion_ms": 1501
+          "duracion_ms": 1464
         }
       ],
-      "respuesta": "Los tres empleados suman un total de 63 días de vacaciones. El cálculo es el siguiente:\n\n- Empleado con 3 años de antigüedad: 14 días\n- Empleado con 7 años de antigüedad: 21 días\n- Empleado con 12 años de antigüedad: 28 días\n\nTotal: 14 + 21 + 28 = 63 días.\n\nFuente: política_vacaciones.txt. \n\nNo hay advertencias o supuestos adicionales.",
+      "respuesta": "Los tres empleados suman un total de 63 días de vacaciones. El cálculo es el siguiente:\n\n- Empleado con 3 años de antigüedad: 14 días\n- Empleado con 7 años de antigüedad: 21 días\n- Empleado con 12 años de antigüedad: 28 días\n\nTotal: 14 + 21 + 28 = 63 días.\n\nFuente de los datos: política de vacaciones de la empresa. \n\nNo hay advertencias o supuestos relevantes en este cálculo.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 2,
@@ -759,14 +759,14 @@
             "cita": "Los empleados con menos de 5 años de antigüedad acceden a 14 días corridos de vacaciones."
           },
           {
-            "afirmacion": "Los empleados con 7 años de antigüedad acceden a 21 días corridos de vacaciones.",
+            "afirmacion": "Los empleados con 7 años de antigüedad acceden a 21 días de vacaciones.",
             "valor": 21.0,
             "unidad": "días corridos",
             "fuente": "politica_vacaciones.txt",
             "cita": "Los empleados con 5 a 10 años acceden a 21 días."
           },
           {
-            "afirmacion": "Los empleados con 12 años de antigüedad acceden a 28 días corridos de vacaciones.",
+            "afirmacion": "Los empleados con 12 años de antigüedad acceden a 28 días de vacaciones.",
             "valor": 28.0,
             "unidad": "días corridos",
             "fuente": "politica_vacaciones.txt",
@@ -813,7 +813,7 @@
           "paso": 3,
           "origen": "llm",
           "siguiente": "FINISH",
-          "razon": "Todos los datos han sido validados y se ha realizado el cálculo correctamente.",
+          "razon": "Todos los datos han sido validados y se han realizado los cálculos necesarios. La suma de días de vacaciones es correcta y completa.",
           "instruccion": "",
           "rubrica": {
             "completitud": true,
@@ -823,11 +823,11 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 12380,
+      "duracion_ms": 13317,
       "tokens": {
-        "input_tokens": 6940,
-        "output_tokens": 789,
-        "total_tokens": 7729
+        "input_tokens": 6920,
+        "output_tokens": 804,
+        "total_tokens": 7724
       },
       "verificaciones": [
         {
@@ -868,8 +868,8 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
-            "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
-            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones corresponden por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+            "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de TechCorp.",
+            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
             "rubrica": {
               "completitud": false,
               "respaldo_en_evidencia": false,
@@ -878,7 +878,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1273
+          "duracion_ms": 1781
         },
         {
           "orden": 2,
@@ -896,7 +896,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 4225
+          "duracion_ms": 5707
         },
         {
           "orden": 3,
@@ -906,24 +906,24 @@
             "para": "investigador",
             "hallazgos": []
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         },
         {
           "orden": 4,
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "Ya están todos los números y falta un cálculo sobre los días de vacaciones en 3 años.",
-            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Debe devolver el total de días de vacaciones en 3 años.",
+            "razon": "Ya están todos los números y falta un cálculo.",
+            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año. Debe devolver el total de días de vacaciones acumulados en 3 años.",
             "rubrica": {
-              "completitud": false,
+              "completitud": true,
               "respaldo_en_evidencia": true,
               "consistencia": true
             },
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1416
+          "duracion_ms": 1474
         },
         {
           "orden": 5,
@@ -941,7 +941,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2225
+          "duracion_ms": 2079
         },
         {
           "orden": 6,
@@ -964,17 +964,17 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "El investigador ya validó que el empleado con más de 10 años tiene 28 días de vacaciones. Falta un cálculo para determinar el total en 3 años.",
-            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+            "razon": "El investigador ya validó que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
+            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones acumulados en 3 años multiplicando 28 días por año por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
             "rubrica": {
-              "completitud": false,
+              "completitud": true,
               "respaldo_en_evidencia": true,
               "consistencia": false
             },
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1358
+          "duracion_ms": 1667
         },
         {
           "orden": 8,
@@ -992,7 +992,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2010
+          "duracion_ms": 2025
         },
         {
           "orden": 9,
@@ -1002,14 +1002,14 @@
             "para": "analista",
             "hallazgos": []
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         },
         {
           "orden": 10,
           "nodo": "supervisor",
           "titulo": "supervisor decide → FINISH (llm)",
           "detalle": {
-            "razon": "Se han respondido todas las partes de la pregunta, se ha validado la política de vacaciones y se ha realizado el cálculo correspondiente.",
+            "razon": "Todas las partes de la pregunta están respondidas, los datos provienen de hallazgos validados y los resultados son consistentes.",
             "instruccion": "",
             "rubrica": {
               "completitud": true,
@@ -1019,19 +1019,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1103
+          "duracion_ms": 1206
         },
         {
           "orden": 11,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días.\n\nPor lo tanto, le corresponden 84 días de vacaciones en 3 años. \n\nFuente: política de vacaciones de TechCorp. \n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones."
+            "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año (fuente: política_vacaciones.txt). \n\nEn 3 años, el total de días de vacaciones que le corresponden es: \n28 días/año * 3 años = 84 días.\n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de acumulación de vacaciones durante los 3 años."
           },
-          "duracion_ms": 1440
+          "duracion_ms": 1421
         }
       ],
-      "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año. En 3 años, esto suma un total de:\n\n28 días/año * 3 años = 84 días.\n\nPor lo tanto, le corresponden 84 días de vacaciones en 3 años. \n\nFuente: política de vacaciones de TechCorp. \n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones.",
+      "respuesta": "Un empleado con más de 10 años de antigüedad en TechCorp tiene derecho a 28 días corridos de vacaciones por año (fuente: política_vacaciones.txt). \n\nEn 3 años, el total de días de vacaciones que le corresponden es: \n28 días/año * 3 años = 84 días.\n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de acumulación de vacaciones durante los 3 años.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 3,
@@ -1077,7 +1077,7 @@
       "analysis_output": {
         "expresion": "28 * 3",
         "resultado": 84.0,
-        "explicacion": "Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.",
+        "explicacion": "Se calculó el total de días de vacaciones acumulados en 3 años multiplicando 28 días por año por 3 años.",
         "supuestos": [],
         "confidence_score": 1.0
       },
@@ -1086,8 +1086,8 @@
           "paso": 1,
           "origen": "llm",
           "siguiente": "investigador",
-          "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
-          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones corresponden por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+          "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de TechCorp.",
+          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
           "rubrica": {
             "completitud": false,
             "respaldo_en_evidencia": false,
@@ -1099,10 +1099,10 @@
           "paso": 2,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "Ya están todos los números y falta un cálculo sobre los días de vacaciones en 3 años.",
-          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Debe devolver el total de días de vacaciones en 3 años.",
+          "razon": "Ya están todos los números y falta un cálculo.",
+          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, usando el dato de 28 días por año. Debe devolver el total de días de vacaciones acumulados en 3 años.",
           "rubrica": {
-            "completitud": false,
+            "completitud": true,
             "respaldo_en_evidencia": true,
             "consistencia": true
           },
@@ -1112,10 +1112,10 @@
           "paso": 3,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "El investigador ya validó que el empleado con más de 10 años tiene 28 días de vacaciones. Falta un cálculo para determinar el total en 3 años.",
-          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+          "razon": "El investigador ya validó que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
+          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones acumulados en 3 años multiplicando 28 días por año por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
           "rubrica": {
-            "completitud": false,
+            "completitud": true,
             "respaldo_en_evidencia": true,
             "consistencia": false
           },
@@ -1125,7 +1125,7 @@
           "paso": 4,
           "origen": "llm",
           "siguiente": "FINISH",
-          "razon": "Se han respondido todas las partes de la pregunta, se ha validado la política de vacaciones y se ha realizado el cálculo correspondiente.",
+          "razon": "Todas las partes de la pregunta están respondidas, los datos provienen de hallazgos validados y los resultados son consistentes.",
           "instruccion": "",
           "rubrica": {
             "completitud": true,
@@ -1135,11 +1135,11 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 15056,
+      "duracion_ms": 17368,
       "tokens": {
-        "input_tokens": 9242,
-        "output_tokens": 960,
-        "total_tokens": 10202
+        "input_tokens": 9194,
+        "output_tokens": 909,
+        "total_tokens": 10103
       },
       "verificaciones": [
         {
@@ -1195,7 +1195,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1769
+          "duracion_ms": 1399
         },
         {
           "orden": 2,
@@ -1205,7 +1205,7 @@
             "herramientas": [],
             "ok_ejecucion": false
           },
-          "duracion_ms": 60023
+          "duracion_ms": 59989
         },
         {
           "orden": 3,
@@ -1238,7 +1238,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1380
+          "duracion_ms": 1473
         },
         {
           "orden": 5,
@@ -1248,7 +1248,7 @@
             "herramientas": [],
             "ok_ejecucion": false
           },
-          "duracion_ms": 60019
+          "duracion_ms": 60025
         },
         {
           "orden": 6,
@@ -1264,7 +1264,7 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 3
         },
         {
           "orden": 7,
@@ -1281,7 +1281,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1401
+          "duracion_ms": 1658
         },
         {
           "orden": 8,
@@ -1291,7 +1291,7 @@
             "herramientas": [],
             "ok_ejecucion": false
           },
-          "duracion_ms": 60205
+          "duracion_ms": 60077
         },
         {
           "orden": 9,
@@ -1307,7 +1307,7 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         },
         {
           "orden": 10,
@@ -1326,7 +1326,7 @@
             ],
             "motivo_escalamiento": "VALIDACION_IRRESOLUBLE:investigador"
           },
-          "duracion_ms": 1411
+          "duracion_ms": 1349
         },
         {
           "orden": 11,
@@ -1335,7 +1335,7 @@
           "detalle": {
             "respuesta": "Esta consulta requiere revisión humana (motivo: VALIDACION_IRRESOLUBLE:investigador). No entrego un resultado definitivo porque no superó la validación automática.\nErrores sin resolver:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: TimeoutError: "
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         }
       ],
       "respuesta": "Esta consulta requiere revisión humana (motivo: VALIDACION_IRRESOLUBLE:investigador). No entrego un resultado definitivo porque no superó la validación automática.\nErrores sin resolver:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: TimeoutError: ",
@@ -1409,11 +1409,11 @@
           ]
         }
       ],
-      "duracion_ms": 186215,
+      "duracion_ms": 185979,
       "tokens": {
-        "input_tokens": 1029046,
-        "output_tokens": 4244,
-        "total_tokens": 1033290
+        "input_tokens": 975896,
+        "output_tokens": 4146,
+        "total_tokens": 980042
       },
       "verificaciones": [
         {
@@ -1450,7 +1450,7 @@
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
             "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de la empresa.",
-            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
+            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente de la información.",
             "rubrica": {
               "completitud": false,
               "respaldo_en_evidencia": false,
@@ -1459,7 +1459,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1358
+          "duracion_ms": 1450
         },
         {
           "orden": 2,
@@ -1469,7 +1469,7 @@
             "herramientas": [],
             "ok_ejecucion": false
           },
-          "duracion_ms": 1
+          "duracion_ms": 2
         },
         {
           "orden": 3,
@@ -1485,15 +1485,15 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         },
         {
           "orden": 4,
           "nodo": "supervisor",
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
-            "razon": "Falta el dato de cuántos días de vacaciones corresponden por año, que es necesario para responder la pregunta.",
-            "instruccion": "Investiga cuántos días de vacaciones le corresponden a un empleado de TechCorp por año según la política de vacaciones. Devuelve el número de días de vacaciones por año y la fuente de la información.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: (no hubo artefacto)\nErrores específicos:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: ErrorInyectado: Falla simulada del especialista 'investigador'\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+            "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
+            "instruccion": "Investiga cuántos días de vacaciones le corresponden a un empleado de TechCorp por año según la política de vacaciones. Devuelve el número de días por año y la fuente de la información.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: (no hubo artefacto)\nErrores específicos:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: ErrorInyectado: Falla simulada del especialista 'investigador'\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
             "rubrica": {
               "completitud": false,
               "respaldo_en_evidencia": false,
@@ -1502,7 +1502,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1546
+          "duracion_ms": 2132
         },
         {
           "orden": 5,
@@ -1520,7 +1520,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 4559
+          "duracion_ms": 4565
         },
         {
           "orden": 6,
@@ -1530,7 +1530,7 @@
             "para": "investigador",
             "hallazgos": []
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         },
         {
           "orden": 7,
@@ -1547,7 +1547,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1470
+          "duracion_ms": 1515
         },
         {
           "orden": 8,
@@ -1565,7 +1565,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2269
+          "duracion_ms": 2122
         },
         {
           "orden": 9,
@@ -1575,7 +1575,7 @@
             "para": "analista",
             "hallazgos": []
           },
-          "duracion_ms": 0
+          "duracion_ms": 2
         },
         {
           "orden": 10,
@@ -1592,19 +1592,19 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1241
+          "duracion_ms": 1228
         },
         {
           "orden": 11,
           "nodo": "sintesis",
           "titulo": "sintesis: respuesta redactada",
           "detalle": {
-            "respuesta": "El empleado de TechCorp, con 12 años de antigüedad, le corresponden 28 días corridos de vacaciones por año, según la política de vacaciones de la empresa. \n\nEn 3 años, sumará un total de 84 días de vacaciones, calculado de la siguiente manera: 28 días/año * 3 años = 84 días.\n\nAdvertencia: Este cálculo asume que el empleado mantendrá el mismo ritmo de antigüedad y no se aplican cambios en la política de vacaciones."
+            "respuesta": "Un empleado con 12 años de antigüedad en TechCorp le corresponden 28 días corridos de vacaciones por año, según la política de vacaciones de la empresa. \n\nSi consideramos un periodo de 3 años, el cálculo es el siguiente:\n28 días/año * 3 años = 84 días de vacaciones.\n\nPor lo tanto, en 3 años, el empleado suma un total de 84 días de vacaciones. \n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones."
           },
-          "duracion_ms": 1208
+          "duracion_ms": 1494
         }
       ],
-      "respuesta": "El empleado de TechCorp, con 12 años de antigüedad, le corresponden 28 días corridos de vacaciones por año, según la política de vacaciones de la empresa. \n\nEn 3 años, sumará un total de 84 días de vacaciones, calculado de la siguiente manera: 28 días/año * 3 años = 84 días.\n\nAdvertencia: Este cálculo asume que el empleado mantendrá el mismo ritmo de antigüedad y no se aplican cambios en la política de vacaciones.",
+      "respuesta": "Un empleado con 12 años de antigüedad en TechCorp le corresponden 28 días corridos de vacaciones por año, según la política de vacaciones de la empresa. \n\nSi consideramos un periodo de 3 años, el cálculo es el siguiente:\n28 días/año * 3 años = 84 días de vacaciones.\n\nPor lo tanto, en 3 años, el empleado suma un total de 84 días de vacaciones. \n\nAdvertencia: Este cálculo asume que el empleado mantiene el mismo ritmo de antigüedad y no hay cambios en la política de vacaciones.",
       "estado_final": "COMPLETADO",
       "motivo_escalamiento": null,
       "pasos": 3,
@@ -1650,7 +1650,7 @@
       "analysis_output": {
         "expresion": "28 * 3",
         "resultado": 84.0,
-        "explicacion": "Se multiplicaron 28 días de vacaciones por año por 3 años, ya que el empleado tiene más de 10 años de antigüedad.",
+        "explicacion": "Se multiplicaron los 28 días de vacaciones por año por 3 años, resultando en un total de 84 días de vacaciones.",
         "supuestos": [],
         "confidence_score": 1.0
       },
@@ -1660,7 +1660,7 @@
           "origen": "llm",
           "siguiente": "investigador",
           "razon": "Falta el dato específico sobre los días de vacaciones que corresponden por año según la política de la empresa.",
-          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
+          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones por año y la fuente de la información.",
           "rubrica": {
             "completitud": false,
             "respaldo_en_evidencia": false,
@@ -1672,8 +1672,8 @@
           "paso": 2,
           "origen": "llm",
           "siguiente": "investigador",
-          "razon": "Falta el dato de cuántos días de vacaciones corresponden por año, que es necesario para responder la pregunta.",
-          "instruccion": "Investiga cuántos días de vacaciones le corresponden a un empleado de TechCorp por año según la política de vacaciones. Devuelve el número de días de vacaciones por año y la fuente de la información.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: (no hubo artefacto)\nErrores específicos:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: ErrorInyectado: Falla simulada del especialista 'investigador'\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+          "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
+          "instruccion": "Investiga cuántos días de vacaciones le corresponden a un empleado de TechCorp por año según la política de vacaciones. Devuelve el número de días por año y la fuente de la información.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: (no hubo artefacto)\nErrores específicos:\n- [ERROR_ESPECIALISTA] El investigador falló al ejecutarse: ErrorInyectado: Falla simulada del especialista 'investigador'\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
           "rubrica": {
             "completitud": false,
             "respaldo_en_evidencia": false,
@@ -1708,11 +1708,11 @@
           "sobrescrituras": []
         }
       ],
-      "duracion_ms": 13657,
+      "duracion_ms": 14516,
       "tokens": {
-        "input_tokens": 7602,
-        "output_tokens": 848,
-        "total_tokens": 8450
+        "input_tokens": 7596,
+        "output_tokens": 853,
+        "total_tokens": 8449
       },
       "verificaciones": [
         {
@@ -1758,8 +1758,8 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → investigador (llm)",
           "detalle": {
-            "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
-            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones corresponden por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+            "razon": "Falta el dato de cuántos días de vacaciones le corresponden por año según la política de la empresa.",
+            "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
             "rubrica": {
               "completitud": false,
               "respaldo_en_evidencia": false,
@@ -1768,7 +1768,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1562
+          "duracion_ms": 1539
         },
         {
           "orden": 2,
@@ -1779,14 +1779,14 @@
               {
                 "nombre": "buscar_en_politicas_internas",
                 "args": {
-                  "pregunta": "días de vacaciones por año"
+                  "pregunta": "días de vacaciones anuales"
                 },
                 "salida": "[Fuente: politica_teletrabajo.txt] Política de Teletrabajo - TechCorp\n\nEl esquema estándar es de 3 días de trabajo remoto y 2 días presenciales por semana. Soporte Técnico Nivel 1 y Recepción son 100% presenciales.\n\n[Fuente: politica_vacaciones.txt] Política de Vacaciones - TechCorp\n\nLos empleados c"
               }
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 4259
+          "duracion_ms": 5122
         },
         {
           "orden": 3,
@@ -1803,17 +1803,17 @@
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "Ya están todos los números y falta un cálculo.",
-            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Devolver el total de días de vacaciones en 3 años.",
+            "razon": "Faltan cálculos para determinar el total de días de vacaciones en 3 años.",
+            "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, considerando que tiene más de 10 años de antigüedad y le corresponden 28 días de vacaciones por año. Usar el valor 28 días por año y multiplicar por 3 años.",
             "rubrica": {
-              "completitud": true,
+              "completitud": false,
               "respaldo_en_evidencia": true,
               "consistencia": true
             },
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1504
+          "duracion_ms": 1628
         },
         {
           "orden": 5,
@@ -1831,7 +1831,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2123
+          "duracion_ms": 2194
         },
         {
           "orden": 6,
@@ -1847,15 +1847,15 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 2
         },
         {
           "orden": 7,
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "El investigador ha validado que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
-            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+            "razon": "El investigador ya validó los días de vacaciones correspondientes y ahora se necesita un cálculo correcto basado en esos datos.",
+            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se multiplicaron 28 días de vacaciones por año por 3 años, ya que el empleado tiene más de 10 años de antigüedad.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
             "rubrica": {
               "completitud": true,
               "respaldo_en_evidencia": true,
@@ -1864,7 +1864,7 @@
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1613
+          "duracion_ms": 1400
         },
         {
           "orden": 8,
@@ -1882,7 +1882,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2306
+          "duracion_ms": 2047
         },
         {
           "orden": 9,
@@ -1898,24 +1898,24 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 2
         },
         {
           "orden": 10,
           "nodo": "supervisor",
           "titulo": "supervisor decide → analista (llm)",
           "detalle": {
-            "razon": "El investigador ha validado que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
-            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+            "razon": "El investigador ya validó que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe calcular correctamente el total para 3 años.",
+            "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se multiplicaron 28 días de vacaciones por año por 3 años, resultando en un total de 84 días de vacaciones.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
             "rubrica": {
-              "completitud": false,
+              "completitud": true,
               "respaldo_en_evidencia": true,
               "consistencia": false
             },
             "sobrescrituras": [],
             "motivo_escalamiento": null
           },
-          "duracion_ms": 1707
+          "duracion_ms": 1638
         },
         {
           "orden": 11,
@@ -1933,7 +1933,7 @@
             ],
             "ok_ejecucion": true
           },
-          "duracion_ms": 2173
+          "duracion_ms": 2198
         },
         {
           "orden": 12,
@@ -1949,7 +1949,7 @@
               }
             ]
           },
-          "duracion_ms": 0
+          "duracion_ms": 2
         },
         {
           "orden": 13,
@@ -1968,7 +1968,7 @@
             ],
             "motivo_escalamiento": "VALIDACION_IRRESOLUBLE:analista"
           },
-          "duracion_ms": 1525
+          "duracion_ms": 1572
         },
         {
           "orden": 14,
@@ -1977,7 +1977,7 @@
           "detalle": {
             "respuesta": "Esta consulta requiere revisión humana (motivo: VALIDACION_IRRESOLUBLE:analista). No entrego un resultado definitivo porque no superó la validación automática.\nErrores sin resolver:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nAportes que sí fueron validados:\n- [investigador] Los empleados con menos de 5 años de antigüedad acceden a 14 días corridos de vacaciones. (valor=14 días corridos por año) — fuente: politica_vacaciones.txt\n- [investigador] Los empleados con 5 a 10 años acceden a 21 días de vacaciones. (valor=21 días corridos por año) — fuente: politica_vacaciones.txt\n- [investigador] Los empleados con más de 10 años acceden a 28 días de vacaciones. (valor=28 días corridos por año) — fuente: politica_vacaciones.txt"
           },
-          "duracion_ms": 0
+          "duracion_ms": 1
         }
       ],
       "respuesta": "Esta consulta requiere revisión humana (motivo: VALIDACION_IRRESOLUBLE:analista). No entrego un resultado definitivo porque no superó la validación automática.\nErrores sin resolver:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nAportes que sí fueron validados:\n- [investigador] Los empleados con menos de 5 años de antigüedad acceden a 14 días corridos de vacaciones. (valor=14 días corridos por año) — fuente: politica_vacaciones.txt\n- [investigador] Los empleados con 5 a 10 años acceden a 21 días de vacaciones. (valor=21 días corridos por año) — fuente: politica_vacaciones.txt\n- [investigador] Los empleados con más de 10 años acceden a 28 días de vacaciones. (valor=28 días corridos por año) — fuente: politica_vacaciones.txt",
@@ -1996,7 +1996,7 @@
         "analista": false
       },
       "research_output": {
-        "consulta": "días de vacaciones por año",
+        "consulta": "días de vacaciones anuales",
         "estado": "completo",
         "hallazgos": [
           {
@@ -2026,7 +2026,7 @@
       "analysis_output": {
         "expresion": "28 * 3",
         "resultado": 85.0,
-        "explicacion": "Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.",
+        "explicacion": "Se multiplicaron 28 días de vacaciones por año por 3 años, resultando en un total de 84 días de vacaciones.",
         "supuestos": [],
         "confidence_score": 1.0
       },
@@ -2035,8 +2035,8 @@
           "paso": 1,
           "origen": "llm",
           "siguiente": "investigador",
-          "razon": "Falta el dato de cuántos días de vacaciones corresponden por año según la política de la empresa.",
-          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones corresponden por año. Devolver el número de días de vacaciones por año y la fuente con cita textual.",
+          "razon": "Falta el dato de cuántos días de vacaciones le corresponden por año según la política de la empresa.",
+          "instruccion": "Buscar la política de vacaciones de TechCorp para determinar cuántos días de vacaciones le corresponden a un empleado por año. Devolver el número de días de vacaciones anuales y la fuente con cita textual.",
           "rubrica": {
             "completitud": false,
             "respaldo_en_evidencia": false,
@@ -2048,10 +2048,10 @@
           "paso": 2,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "Ya están todos los números y falta un cálculo.",
-          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años, usando el dato de 28 días por año (por tener más de 10 años de antigüedad). Devolver el total de días de vacaciones en 3 años.",
+          "razon": "Faltan cálculos para determinar el total de días de vacaciones en 3 años.",
+          "instruccion": "Calcular cuántos días de vacaciones le corresponden al empleado en 3 años consecutivos, considerando que tiene más de 10 años de antigüedad y le corresponden 28 días de vacaciones por año. Usar el valor 28 días por año y multiplicar por 3 años.",
           "rubrica": {
-            "completitud": true,
+            "completitud": false,
             "respaldo_en_evidencia": true,
             "consistencia": true
           },
@@ -2061,8 +2061,8 @@
           "paso": 3,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "El investigador ha validado que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
-          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días de vacaciones en 3 años consecutivos. Usar el valor 28 y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+          "razon": "El investigador ya validó los días de vacaciones correspondientes y ahora se necesita un cálculo correcto basado en esos datos.",
+          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se multiplicaron 28 días de vacaciones por año por 3 años, ya que el empleado tiene más de 10 años de antigüedad.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
           "rubrica": {
             "completitud": true,
             "respaldo_en_evidencia": true,
@@ -2074,10 +2074,10 @@
           "paso": 4,
           "origen": "llm",
           "siguiente": "analista",
-          "razon": "El investigador ha validado que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe recalcular el total para 3 años.",
-          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se calculó el total de días de vacaciones para un empleado con más de 10 años de antigüedad, que corresponde a 28 días por año, multiplicado por 3 años.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
+          "razon": "El investigador ya validó que el empleado con más de 10 años tiene derecho a 28 días de vacaciones. El analista debe calcular correctamente el total para 3 años.",
+          "instruccion": "Calcular cuántos días de vacaciones suma un empleado con 28 días por año en 3 años consecutivos. Usar el valor 28 para los días por año y multiplicar por 3. Devolver el resultado exacto.\n\n[REPARACIÓN] Tu salida anterior fue rechazada por el validador determinístico.\nSalida anterior: {\"expresion\":\"28 * 3\",\"resultado\":85.0,\"explicacion\":\"Se multiplicaron 28 días de vacaciones por año por 3 años, resultando en un total de 84 días de vacaciones.\",\"supuestos\":[],\"confidence_score\":1.0}\nErrores específicos:\n- [RESULTADO_INCONSISTENTE] La expresión '28 * 3' da 84, pero reportaste resultado=85. Reportá exactamente el valor que devuelve la calculadora.\nCorregí SOLO eso y devolvé el artefacto completo otra vez.",
           "rubrica": {
-            "completitud": false,
+            "completitud": true,
             "respaldo_en_evidencia": true,
             "consistencia": false
           },
@@ -2099,11 +2099,11 @@
           ]
         }
       ],
-      "duracion_ms": 18781,
+      "duracion_ms": 19353,
       "tokens": {
-        "input_tokens": 11738,
-        "output_tokens": 1107,
-        "total_tokens": 12845
+        "input_tokens": 11734,
+        "output_tokens": 1108,
+        "total_tokens": 12842
       },
       "verificaciones": [
         {
@@ -2143,7 +2143,7 @@
     "escenarios": 8,
     "verificaciones_ok": 41,
     "verificaciones_total": 42,
-    "tokens": 1087721,
-    "duracion_s": 272.6
+    "tokens": 1034362,
+    "duracion_s": 277.2
   }
 }
